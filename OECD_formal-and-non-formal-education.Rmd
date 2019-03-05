@@ -1,0 +1,57 @@
+---
+title: "Participation rate in formal and non-formal education and training, by sex (%)"
+output:
+  html_document:
+    df_print: paged
+  github_document: default
+  html_notebook: default
+---
+
+```{r setup}
+library(tidyverse)
+library(jsonlite)    # readr package doesn't handle json file
+library(ggvis)
+```
+
+# Participation rate in formal and non-formal education and training, by sex (%) [OECD]
+## Data import
+
+Data downloaded from https://www.apihighways.org/data-sets/4126d121-2d15-41e8-bb87-4e56c2b1129a
+On data.world [https://data.world/gpsdd/4126d121-2d15-41e8-bb87-4e56c2b1129a]
+
+Original source : United Nations Statistics Division, Programme for the International Assessment of Adult Competencies (OECD)
+
+
+```{r}
+# readr package doesn't handle json file, so use jsonlite package
+df <- fromJSON("data/4126d121-2d15-41e8-bb87-4e56c2b1129a.json")
+# df <- fromJSON("data/4126d121-2d15-41e8-bb87-4e56c2b1129a.json", simplifyVector = TRUE, simplifyDataFrame = TRUE, simplifyMatrix = TRUE)
+
+df
+is.data.frame(df)
+#colnames(df)
+#as_data_frame(df)
+```
+
+16 columns, of which the first 3 are lists (etc)
+
+
+
+## Data cleaning
+
+
+## Basic EDA
+
+```{r}
+# str(df)
+
+df_flat <- jsonlite::flatten(df, recursive = TRUE)
+# str(df_flat)
+# df_flat
+```
+
+
+
+
+
+
